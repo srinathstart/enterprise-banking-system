@@ -1,13 +1,24 @@
 class Account:
-    def __init__(self, account_number, balance):
-        print("self is:", self)
-        self.account_number = account_number
-        self.balance = balance
+    def __init__(self, name, balance):
+        self.name = name
+        self._balance = balance
+
+    def get_balance(self):
+        return self._balance
+
+    def deposit(self, amount):
+        if amount <= 0:
+            print("Deposit amount must be positive")
+            return
+
+        self._balance += amount
 
 
+        
+acc = Account("Srinath", 1000)
 
-acc1 = Account(101, 5000)
-acc2 = Account(102, 12000)
+acc.deposit(500)
+print(acc.get_balance())
 
-print(acc1.account_number, acc1.balance)
-print(acc2.account_number, acc2.balance)
+acc.deposit(-200)
+print(acc.get_balance())
