@@ -25,19 +25,16 @@ class Account:
         self._balance -= amount
 
 
+class SavingsAccount(Account):
+    pass
 
-acc = Account("Srinath", 1000)
+
+
+
+acc = SavingsAccount("Srinath", 1000)
 
 acc.deposit(500)
-print(acc.get_balance())
-
-acc.deposit(-200)
-print(acc.get_balance())
-
-acc.withdraw(300)
-print(acc.get_balance())
-
-acc.withdraw(1000)
-acc.withdraw(-50)
+acc.withdraw(200)
 
 print(acc.get_balance())
+
