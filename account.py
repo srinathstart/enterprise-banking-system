@@ -39,16 +39,26 @@ class SavingsAccount(Account):
         super().withdraw(amount)
         self.withdraw_count += 1
 
+class CurrentAccount(Account):
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Withdrawal amount must be positive")
+            return
+
+        # overdraft allowed
+        self._balance -= amount
 
 
 
-acc = SavingsAccount("Srinath", 1000)
 
-acc.withdraw(100)
-acc.withdraw(100)
-acc.withdraw(100)
-acc.withdraw(100)   # 4th time
+accounts = [
+    SavingsAccount("Srinath", 1000),
+    CurrentAccount("Company", 2000)
+]
 
-print(acc.get_balance())
+for acc in accounts:
+    acc.withdraw(500)
+    print(acc.get_balance())
 
 
