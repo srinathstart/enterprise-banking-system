@@ -26,15 +26,29 @@ class Account:
 
 
 class SavingsAccount(Account):
-    pass
+    
+    def __init__(self, name, balance):
+        super().__init__(name, balance)
+        self.withdraw_count = 0
+
+    def withdraw(self, amount):
+        if self.withdraw_count >= 3:
+            print("Withdrawal limit reached for Savings Account")
+            return
+
+        super().withdraw(amount)
+        self.withdraw_count += 1
 
 
 
 
 acc = SavingsAccount("Srinath", 1000)
 
-acc.deposit(500)
-acc.withdraw(200)
+acc.withdraw(100)
+acc.withdraw(100)
+acc.withdraw(100)
+acc.withdraw(100)   # 4th time
 
 print(acc.get_balance())
+
 
